@@ -90,7 +90,7 @@ static pair<vector<string>,vector<vector<int32_t>>> readDigest(string path)
                  );
 
             vector<int32_t> decoded_ints(int_parts.size()/4);
-            for (int i = 0; i < int_parts.size(); i+=4)
+            for (unsigned int i = 0; i < int_parts.size(); i+=4)
             {
                 //big endian extraction of the right value
                 int32_t dec_i = (int_parts[i+0]<<24) | (int_parts[i+1]<<16) | (int_parts[i+2]<<8) | (int_parts[i+3]<<0);
