@@ -1,7 +1,6 @@
 #include <cstdlib>
 #include <cstdint>
 #include <string>
-#include <x86intrin.h>
 #include <boost/archive/iterators/base64_from_binary.hpp>
 #include <boost/archive/iterators/binary_from_base64.hpp>
 #include <boost/archive/iterators/transform_width.hpp>
@@ -45,7 +44,7 @@ vector<int32_t> cstring_to_lzjd(char* hash) {
             );
 
     vector<int32_t> decoded_ints(int_parts.size() / 4);
-    for (int i = 0; i < int_parts.size(); i += 4) {
+    for (unsigned int i = 0; i < int_parts.size(); i += 4) {
         //big endian extraction of the right value
         int32_t dec_i = (int_parts[i + 0] << 24) | (int_parts[i + 1] << 16) | (int_parts[i + 2] << 8) | (int_parts[i + 3] << 0);
         decoded_ints[i / 4] = dec_i;
